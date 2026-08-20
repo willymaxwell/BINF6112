@@ -1,0 +1,8 @@
+sequences: 4
+total bases: 70
+GC bases: 36
+sequence IDs:
+seq1 Homo sapiens example
+seq2 Mus musculus example
+seq3 partial
+seq4 short
