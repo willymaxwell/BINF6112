@@ -1,4 +1,4 @@
-sequences: 4
+sequences: 6 (4)
 total bases: 70
 GC bases: 36
 sequence IDs:
