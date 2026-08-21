@@ -1,0 +1,3 @@
+reads: 4
+mean read length: 6.0
+mean quality (Phred): 23.33
