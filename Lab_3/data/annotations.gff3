@@ -1,0 +1,10 @@
+##gff-version 3
+chr1	.	gene	1000	9000	.	+	.	ID=gene1
+chr1	.	mRNA	1000	9000	.	+	.	ID=mrna1;Parent=gene1
+chr1	.	exon	1000	2000	.	+	.	Parent=mrna1
+chr1	.	exon	3000	4000	.	+	.	Parent=mrna1
+chr1	.	CDS	1200	2000	.	+	0	Parent=mrna1
+chr1	.	CDS	3000	3800	.	+	0	Parent=mrna1
+chr2	.	gene	500	1500	.	-	.	ID=gene2
+chr2	.	mRNA	500	1500	.	-	.	ID=mrna2;Parent=gene2
+chr2	.	exon	500	1500	.	-	.	Parent=mrna2

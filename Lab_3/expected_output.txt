@@ -1,0 +1,4 @@
+CDS	2
+exon	3
+gene	2
+mRNA	2
