@@ -18,7 +18,7 @@ def main(path):
             pass
 
     # Prints "type<TAB>count" for each feature type in sorted(counts)
-    for t in sorted(counts): print(t, counts(t), sep='\t')
+    for t in sorted(counts): print(t, counts[t], sep='\t')
 
 
 if __name__ == "__main__":
