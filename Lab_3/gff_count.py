@@ -19,8 +19,11 @@ def main(path):
     counts = Counter()
     with open(path) as fh:
         for line in fh:
-            # TODO: skip comment lines (start with '#') and blank lines
+            #Skips comment lines (start with "#")
+            if line.startswith("#"): continue 
+
             # TODO: split the line on tabs and take the feature type (index 2)
+            line.rstrip().split("\t")
             # TODO: add 1 to counts for that feature type
             pass
     # TODO: for each feature type in sorted(counts), print "type<TAB>count"
