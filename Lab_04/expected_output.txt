@@ -1,0 +1,5 @@
+SNPs: 3
+indels: 2
+variants per chromosome:
+  chr1	3
+  chr2	2
