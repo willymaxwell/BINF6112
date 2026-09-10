@@ -23,9 +23,11 @@ def classify(ref, alt):
 
 def test_classify():
     # TODO: assert classify('A', 'T') == 'SNP'
+    assert classify("A", "T") == "SNP"
     # TODO: assert classify('AT', 'A') == 'indel'
+    assert classify("AT", "A") == "indel"
     # TODO: assert classify('G', 'GTT') == 'indel'
-    pass
+    assert classify("G", "GTT") == "indel"
 
 
 def main(path):
