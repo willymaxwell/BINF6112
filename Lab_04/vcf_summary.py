@@ -8,10 +8,10 @@ import sys
 from collections import Counter
 
 # --- AI-use disclosure -------------------------------------------------------
-# TODO: If you used an AI tool, state which one, what you used it for, and your prompt(s).
-#       If you did not, write "No AI used."
+# AI Tool: Gemini
+# Purpose: Used as a reference guide for code structure, PEP 8 syntax checks, defensive parsing edge cases (blank lines/CRLF), and test assertions.
+# Prompt: "Provide a reference guide for VCF parsing logic, classify() helper, and test_classify assertions to review and implement line-by-line."
 # -----------------------------------------------------------------------------
-
 
 def classify(ref, alt):
     """Return 'SNP' if this is a single-base substitution, else 'indel'."""
