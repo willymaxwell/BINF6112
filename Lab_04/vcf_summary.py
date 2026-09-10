@@ -16,7 +16,9 @@ from collections import Counter
 def classify(ref, alt):
     """Return 'SNP' if this is a single-base substitution, else 'indel'."""
     # TODO: a SNP has len(ref) == 1 AND len(alt) == 1; otherwise it is an indel
-    pass
+    if len(ref) == 1 and len(alt) == 1:
+        return "SNP"
+    return "indel"
 
 
 def test_classify():
