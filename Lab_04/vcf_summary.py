@@ -40,8 +40,13 @@ def main(path):
         for line in fh:
             if line.startswith("#") or not line.strip():
                 continue
+
             clean_line = line.replace("\r", "").rstrip("\n")
             fields = cleanline.split("\t")
+
+            if len(fields) < 5:
+                continue
+
             chrom, ref, alt = fields[0], fields[3], fields[4]
             per_chrom[chrom] += 1
             # TODO: use classify(ref, alt) to increment snps or indels
