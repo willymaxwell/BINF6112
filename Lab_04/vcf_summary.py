@@ -49,7 +49,13 @@ def main(path):
 
             chrom, ref, alt = fields[0], fields[3], fields[4]
             per_chrom[chrom] += 1
+
             # TODO: use classify(ref, alt) to increment snps or indels
+            kind = classify(ref, alt)
+            if kind == "SNP":
+                snps += 1
+            else:
+                indels += 1
     print(f"SNPs: {snps}")
     print(f"indels: {indels}")
     print("variants per chromosome:")
@@ -58,4 +64,7 @@ def main(path):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+        print("Usage: python3 vcf_summary.py <path_to_vcf>", file=sys.stderr)
+        sys.exit(1)
     main(sys.argv[1])
