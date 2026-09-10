@@ -31,14 +31,17 @@ def test_classify():
 
 
 def main(path):
-    test_classify()                      # validate the helper before using it
-    snps = indels = 0
+    test_classify()  # validate the helper before using it
+    
+    snps = 0
+    indels = 0
     per_chrom = Counter()
     with open(path) as fh:
         for line in fh:
             if line.startswith("#") or not line.strip():
                 continue
-            fields = line.rstrip("\n").split("\t")
+            clean_line = line.replace("\r", "").rstrip("\n")
+            fields = cleanline.split("\t")
             chrom, ref, alt = fields[0], fields[3], fields[4]
             per_chrom[chrom] += 1
             # TODO: use classify(ref, alt) to increment snps or indels
