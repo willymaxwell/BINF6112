@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
-"""VCF variant summary. Complete each TODO. Run: python3 vcf_summary.py data/variants.vcf
+""" --- AI-use disclosure -------------------------------------------------------
+ AI Tool: Gemini Notebook (Gemini 1.5 Pro)
 
-You may use an AI assistant to help. If you do, you MUST fill in the disclosure below,
-and you are responsible for the correctness of the code -- so complete the self-test too.
-"""
+ Purpose: Used as a reference guide for code structure, PEP 8 syntax checks,
+ defensive parsing edge cases (blank lines/CRLF), and test assertions.
+
+ Prompt: "Provide a reference guide for VCF parsing logic, classify() helper,
+ and test_classify assertions to review and implement line-by-line."
+ -----------------------------------------------------------------------------"""
+
 import sys
 from collections import Counter
-
-# --- AI-use disclosure -------------------------------------------------------
-# AI Tool: Gemini
-# Purpose: Used as a reference guide for code structure, PEP 8 syntax checks, defensive parsing edge cases (blank lines/CRLF), and test assertions.
-# Prompt: "Provide a reference guide for VCF parsing logic, classify() helper, and test_classify assertions to review and implement line-by-line."
-# -----------------------------------------------------------------------------
 
 def classify(ref, alt):
     """Return 'SNP' if this is a single-base substitution, else 'indel'."""
@@ -42,7 +41,7 @@ def main(path):
                 continue
             # Strip carriage returns (CRLF handling) and trailing newlines
             clean_line = line.replace("\r", "").rstrip("\n")
-            fields = cleanline.split("\t")
+            fields = clean_line.split("\t")
 
             # Defensive check: ensure line has enough VCF fields (CHROM, POS, ID, REF, ALT)
             if len(fields) < 5:
