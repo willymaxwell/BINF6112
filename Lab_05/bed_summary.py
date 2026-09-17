@@ -18,6 +18,11 @@ def go(f):
     print('total covered bp: '+str(t))
 go(sys.argv[1])
 
+def interval_length(start: int, end: int) -> int:
+    """Calculate the length of a 0-based half-open BED interval."""
+    # BED intervals are 0-based half-open [start, end), so length is (end - start) without adding 1
+    return end - start
+
 def main(path: str) -> None:
     """Execute BED file summary and print formatted results."""
     interval_count, total_covered_bp = summarize_bed(path)
