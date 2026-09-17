@@ -17,3 +17,18 @@ def go(f):
     print('intervals: '+str(n))
     print('total covered bp: '+str(t))
 go(sys.argv[1])
+
+def main(path: str) -> None:
+    """Execute BED file summary and print formatted results."""
+    interval_count, total_covered_bp = summarize_bed(path)
+
+    print(f"intervals: {interval_count}")
+    print(f"total covered bp: {total_covered_bp}")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+        print("Usage: python3 bed_summary.py <path_to_bed>", file=sys.stderr)
+        sys.exit(1)
+
+    main(sys.argv[1])
