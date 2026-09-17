@@ -1,23 +1,17 @@
 #!/usr/bin/env python3
-# LAB 05: this script WORKS but is messy. REFACTOR it into clean, type-hinted Python
-# without changing what it prints:
-#   - add type hints to the functions,
-#   - use meaningful variable names,
-#   - split the work into small, single-purpose functions,
-#   - add a module docstring and a comment on the non-obvious line.
-# A BED interval is 0-based half-open, so its length is (end - start).
-import sys
-def go(f):
-    x=open(f); n=0; t=0
-    for l in x:
-        if l.strip()=='':continue
-        p=l.split()
-        n=n+1
-        t=t+(int(p[2])-int(p[1]))
-    print('intervals: '+str(n))
-    print('total covered bp: '+str(t))
-go(sys.argv[1])
+# LAB 05: REFACTORED SCRIPT
+""" --- AI-use disclosure -------------------------------------------------------
+AI Tool: Gemini Notebook (Gemini 1.5 Pro)
 
+Purpose: Consulted as a reference for PEP 8 type-hinting conventions and for brainstorming
+ unit test cases (verifying 0-based half-open interval calculations and malformed
+ line handling). All refactored logic and test execution were independently
+ reviewed and verified.
+
+Prompt: "Help refactor bed_summary.py with type hints and suggest edge-case 
+test cases for 0-based half-open interval calculations."
+ -----------------------------------------------------------------------------"""
+import sys
 def interval_length(start: int, end: int) -> int:
     """Calculate the length of a 0-based half-open BED interval."""
     # BED intervals are 0-based half-open [start, end), so length is (end - start) without adding 1
