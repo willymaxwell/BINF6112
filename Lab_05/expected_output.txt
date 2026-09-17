@@ -1,0 +1,2 @@
+intervals: 4
+total covered bp: 1750
