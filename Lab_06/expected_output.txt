@@ -1,0 +1,2 @@
+GC-rich genes: BRCA1, EGFR, TP53
+mean length of GC-rich genes: 4825.33
