@@ -68,4 +68,9 @@ def main(path):
     print(f"mean length of GC-rich genes: {mean_len:.2f}")
 
 if __name__ == "__main__":
+	if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+    	    print("Usage: python3 gene_filter.py <path_to_csv>", file=sys.stderr)
+        	sys.exit(1)
+
     main(sys.argv[1])
+
