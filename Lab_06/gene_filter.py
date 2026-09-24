@@ -32,17 +32,40 @@ def calculate_mean_length(rows: list[dict[str, str]]) -> float:
 
 
 def main(path):
-    with open(path) as fh:
-        rows = list(csv.DictReader(fh))
-    # TODO: gc_rich = list of rows where float(row["gc"]) > 0.5   (a comprehension)
-    gc_rich =
-    # TODO: names = sorted list of the "gene" values in gc_rich   (a comprehension)
-    names =
-    # TODO: mean_len = mean of int(row["length"]) over gc_rich
-    mean_len =
+	"""Orchestrate CSV reading, GC filtering, metric calculation, and output formatting."""
+    try:
+        rows = read_gene_csv(path)
+    except FileNotFoundError:
+        print(f"Error: File '{path}' not found.", file=sys.stderr)
+        sys.exit(1)
+    except (ValueError, KeyError) as err:
+        print(f"Error: Invalid or malformed CSV data in '{path}': {err}", file=sys.stderr)
+        sys.exit(1)
+
+    if not rows:
+        print(f"Warning: No data rows found in '{path}'.", file=sys.stderr)
+        return
+
+    try:
+        gc_rich_rows = filter_gc_rich(rows)
+    except ValueError as err:
+        print(f"Error: Non-numeric GC value in CSV: {err}", file=sys.stderr)
+        sys.exit(1)
+
+    if not gc_rich_rows:
+        print("Warning: No GC-rich genes (> 0.5) found.", file=sys.stderr)
+        return
+
+    names = extract_sorted_names(gc_rich_rows)
+
+    try:
+        mean_len = calculate_mean_length(gc_rich_rows)
+    except ValueError as err:
+        print(f"Error: Non-integer length value in CSV: {err}", file=sys.stderr)
+        sys.exit(1)
+
     print(f"GC-rich genes: {', '.join(names)}")
     print(f"mean length of GC-rich genes: {mean_len:.2f}")
-
 
 if __name__ == "__main__":
     main(sys.argv[1])
