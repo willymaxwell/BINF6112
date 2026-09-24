@@ -20,6 +20,9 @@ def filter_gc_rich(rows: list[dict[str, str]], threshold: float = 0.5) -> list[d
     """Filter rows for genes with GC content strictly greater than the threshold."""
     return [r for r in rows if float(r["gc"]) > threshold]
 
+def extract_sorted_names(rows: list[dict[str, str]]) -> list[str]:
+    """Extract and return a sorted list of gene names from rows."""
+    return sorted(r["gene"] for r in rows)
 
 
 def main(path):
