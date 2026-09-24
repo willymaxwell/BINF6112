@@ -14,7 +14,7 @@ def read_gene_csv(path: str) -> list[dict[str, str]]:
 			print(f"Error: CSV file '{path}' must contain 'gene', 'gc', and 'length' columns.", file=sys.stderr)
 			sys.exit(1)
 
-	return list(reader)
+		return list(reader)
 
 def filter_gc_rich(rows: list[dict[str, str]], threshold: float = 0.5) -> list[dict[str, str]]:
 	"""Filter rows for genes with GC content strictly greater than the threshold."""
