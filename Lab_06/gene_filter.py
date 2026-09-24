@@ -24,6 +24,12 @@ def extract_sorted_names(rows: list[dict[str, str]]) -> list[str]:
     """Extract and return a sorted list of gene names from rows."""
     return sorted(r["gene"] for r in rows)
 
+def calculate_mean_length(rows: list[dict[str, str]]) -> float:
+    """Calculate the mean length of genes from a list of row dictionaries."""
+    if not rows:
+        return 0.0
+    return sum(int(r["length"]) for r in rows) / len(rows)
+
 
 def main(path):
     with open(path) as fh:
