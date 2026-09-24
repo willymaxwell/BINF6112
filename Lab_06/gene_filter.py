@@ -5,6 +5,22 @@ Run: python3 gene_filter.py data/genes.csv
 import csv
 import sys
 
+def read_gene_csv(path: str) -> list[dict[str, str]]:
+    """Read and validate a gene CSV file, returning a list of row dictionaries."""
+    with open(path, "r", encoding="utf-8") as fh:
+        reader = csv.DictReader(fh)
+
+        if not reader.fieldnames or not {"gene", "gc", "length"}.issubset(set(reader.fieldnames)):
+            print(f"Error: CSV file '{path}' must contain 'gene', 'gc', and 'length' columns.", file=sys.stderr)
+            sys.exit(1)
+
+        return list(reader)
+
+def filter_gc_rich(rows: list[dict[str, str]], threshold: float = 0.5) -> list[dict[str, str]]:
+    """Filter rows for genes with GC content strictly greater than the threshold."""
+    return [r for r in rows if float(r["gc"]) > threshold]
+
+
 
 def main(path):
     with open(path) as fh:
