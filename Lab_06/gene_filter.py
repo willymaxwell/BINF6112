@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
-"""Filter a gene table with comprehensions. Complete each TODO.
-Run: python3 gene_filter.py data/genes.csv
-"""
+"""Filter a gene table with comprehensions.
+Run: python3 gene_filter.py data/genes.csv"""
+
+""" --- AI-use disclosure -------------------------------------------------------
+# AI Tool: Gemini Notebook (Gemini 1.5 Pro)
+# Purpose: Consulted as a technical reference for PEP 8 type-hinting syntax,
+# single-purpose function decomposition, and CSV error-handling edge cases.
+# All script logic and execution were independently written and verified.
+# Prompt: "How to decompose CSV processing into single-purpose functions with
+# PEP, type hints, and handle file-handle scope in Python?"
+-----------------------------------------------------------------------------"""
+
 import csv
 import sys
 
