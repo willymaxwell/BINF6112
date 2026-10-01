@@ -16,7 +16,8 @@ implement magic methods for sequence data objects?"
 import sys
 
 
-class SequenceRecord:   """Constructor"""
+class SequenceRecord:
+    """Constructor"""
     def __init__(self, identifier: str, seq: str) -> None:
         self.identifier: str = identifier
         self.seq: str = seq.upper()
