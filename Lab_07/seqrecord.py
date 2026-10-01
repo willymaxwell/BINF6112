@@ -60,7 +60,7 @@ def main(path: str) -> None:
         record_count=0
         for record in read_fasta(path):
             record_count += 1
-            print(f"{record.identifier}\t{len(record.gc_content():.2f}")
+            print(f"{record.identifier}\t{len(record)}\t{record.gc_content():.2f}")
 
         if record_count == 0:
             print(f"Warning : no FASTA record found in '{path}'.", file=sys.stderr)
