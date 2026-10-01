@@ -74,7 +74,7 @@ def main(path: str) -> None:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
-        print("Usage: python3 seqrecord.py <path_to_fasta>, file = sys.stderr)
+        print("Usage: python3 seqrecord.py <path_to_fasta>", file = sys.stderr)
         sys.exit(1)
 
     main(sys.argv[1])
