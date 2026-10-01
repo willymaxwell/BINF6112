@@ -5,13 +5,18 @@ Complete each TODO. Run: python3 seqrecord.py data/sequences.fasta
 import sys
 
 
-class SequenceRecord:
+class SequenceRecord:   """Constructor"""
     def __init__(self, identifier: str, seq: str) -> None:
         self.identifier: str = identifier
         self.seq: str = seq.upper()
 
     def __len__(self) -> int:
+        """Returns the length of the object's actual sequence."""
         return len(self.seq)
+
+    def __repr__(self) -> str:
+        """Return developer representation of the object"""
+        return f"SequenceRecord(identifier={self.identifier!r}, seq={self.seq!r})"
 
     def gc_content(self) -> float:
         if not self.seq:
