@@ -53,9 +53,22 @@ def read_fasta(path):
         yield SequenceRecord(identifier, "".join(seq))
 
 
-def main(path):
-    for record in read_fasta(path):
-        print(f"{record.identifier}\t{len(record)}\t{record.gc_content():.2f}")
+def main(path: str) -> None:
+    """Parse FASTA file and print per record stats."""
+    try:
+        record_count=0
+        for record in read_fasta(path):
+            record_count += 1
+            print(f"{record.identifier}\t{len(record.gc_content():.2f}")
+
+        if record_count == 0:
+            print(f"Warning : no FASTA record found in '{path}'.", file=sys.stderr)
+    except FileNotFoundError:
+        print(f"Error: File '{path}' is not fount.", file = sys.stderr)
+        sys.exit(1)
+    except Exception as err:
+        print(f"Error reading FASTA file '{path}': {err}", file = sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
