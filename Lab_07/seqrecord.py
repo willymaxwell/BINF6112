@@ -1,7 +1,18 @@
 #!/usr/bin/env python3
-"""Parse a FASTA into SequenceRecord objects and report per-record stats.
-Complete each TODO. Run: python3 seqrecord.py data/sequences.fasta
+"""Parse a FASTA into SequenceRecord objects and report per-record stats."""
+
+"""AI Tool: Gemini Notebook (Gemini 1.5 Pro)
+Purpose: Consulted as a technical reference for PEP 484 class type-hinting,
+Python magic methods (__len__, __repr__), and handling zero-length sequence edge cases.
+
+All class logic, parsing, and execution were independently written and verified.
+
+Prompt:How to annotate class methods in Python with PEP 484 type hints and 
+implement magic methods for sequence data objects?"
+
 """
+
+
 import sys
 
 
@@ -21,7 +32,8 @@ class SequenceRecord:   """Constructor"""
     def gc_content(self) -> float:
         if not self.seq:
             return 0.0
-        return sum(1 for base in self.seq if base in ("G", "C")) / len(self)
+        gc_count = sum(1 for base in self.seq if base in ("G", "C"))
+        return gc_count / len(self)
 
 
 def read_fasta(path):
