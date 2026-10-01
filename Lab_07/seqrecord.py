@@ -39,15 +39,16 @@ class SequenceRecord:   """Constructor"""
 def read_fasta(path):
     """Yield SequenceRecord objects from a FASTA file."""
     identifier, seq = None, []
-    with open(path) as fh:
+
+    with open(path, "r", encoding = "utf8") as fh:
         for line in fh:
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             if line.startswith(">"):
                 if identifier is not None:
                     yield SequenceRecord(identifier, "".join(seq))
-                identifier, seq = line[1:], []
+                identifier, seq = line[1:].strip(), []
             else:
-                seq.append(line)
+                seq.append(line.strip())
     if identifier is not None:
         yield SequenceRecord(identifier, "".join(seq))
 
