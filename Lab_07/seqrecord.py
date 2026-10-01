@@ -6,17 +6,17 @@ import sys
 
 
 class SequenceRecord:
-    def __init__(self, identifier, seq):
-        # TODO: store identifier on self, and store seq uppercased on self
-        pass
+    def __init__(self, identifier: str, seq: str) -> None:
+        self.identifier: str = identifier
+        self.seq: str = seq.upper()
 
-    def __len__(self):
-        # TODO: return the length of the stored sequence
-        pass
+    def __len__(self) -> int:
+        return len(self.seq)
 
-    def gc_content(self):
-        # TODO: return the fraction of G or C bases in the stored sequence
-        pass
+    def gc_content(self) -> float:
+        if not self.seq:
+            return 0.0
+        return sum(1 for base in self.seq if base in ("G", "C")) / len(self)
 
 
 def read_fasta(path):
