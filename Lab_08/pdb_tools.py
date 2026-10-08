@@ -26,16 +26,13 @@ def atom_records(path: str) -> Generator[Lists[str], None, None]:
                 yield line.split()
 
 
-def count_atoms(path):
-    # TODO: return the number of ATOM records
-    pass
+def count_atoms(path) -> int:
+    """Return the total number of ATOM records in the PDB file."""
+    return sum(1 for _ in atom_records(path))
 
 
 def count_chains(path):
-    # TODO: return the number of DISTINCT chain IDs (field index 4)
     pass
 
-
 def count_residues(path):
-    # TODO: return the number of DISTINCT (chain, resSeq) pairs (indices 4 and 5)
     pass
