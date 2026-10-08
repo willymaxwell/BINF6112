@@ -1,0 +1,9 @@
+#python bytecode & cache directories
+__pycache__/
+*.pyc
+
+#Operating system files
+.DS_Store
+
+# Submission archives
+*.zip
