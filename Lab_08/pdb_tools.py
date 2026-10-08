@@ -1,6 +1,5 @@
 """pdb_tools -- a small toolkit for summarizing PDB structures.
-LAB 08: complete each TODO. (Our sample PDB is whitespace-separated for simplicity;
-real PDB files use fixed columns.)
+LAB 08
 
 Field layout after line.split():
   [0]=ATOM  [1]=serial  [2]=atom  [3]=residue  [4]=chain  [5]=resSeq  ...
@@ -25,14 +24,15 @@ def atom_records(path: str) -> Generator[Lists[str], None, None]:
             if line.startswith("ATOM"):
                 yield line.split()
 
-
 def count_atoms(path) -> int:
     """Return the total number of ATOM records in the PDB file."""
     return sum(1 for _ in atom_records(path))
 
 
-def count_chains(path):
-    pass
+def count_chains(path: str) -> int:
+    """Return the number of DISTINCT chain IDs (field index 4)"""
+    return len({fields[4] for fields in atom_records(path)})
+
 
 def count_residues(path):
     pass
