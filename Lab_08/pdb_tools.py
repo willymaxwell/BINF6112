@@ -35,4 +35,13 @@ def count_chains(path: str) -> int:
 
 
 def count_residues(path):
-    pass
+    """Return the number of DISTINCT (chain, resSeq) pairs (indices 4 and 5)."""
+    return len({(fields[4], fields[5]) for fields in atom_records(path)})
+
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) > 1:
+        print(f"atoms:{count_atoms(sys.argv[1])}")
+        print(f"chains: {count_chainrs(sys.argv[1])}")
+        print(f"residues: {count_residues(sys.argv[1])}")
