@@ -12,7 +12,7 @@ def main(path):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < or sys.argv[1] in ("-h", "--help"):
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
         print("Usage: python3 main.py <path_to_pdb>", file=sys.stderr)
         sys.exit(1)
 
