@@ -18,9 +18,9 @@ from typing import Generator, List, Tuple
 # -----------------------------------------------------------------------------
 """
 
-def atom_records(path):
+def atom_records(path: str) -> Generator[Lists[str], None, None]:
     """Yield the whitespace-split fields of each ATOM line in a PDB file."""
-    with open(path) as fh:
+    with open(path, "r", encoding="utf-8") as fh:
         for line in fh:
             if line.startswith("ATOM"):
                 yield line.split()
