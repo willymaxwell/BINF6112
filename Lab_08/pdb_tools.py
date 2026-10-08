@@ -6,6 +6,17 @@ Field layout after line.split():
   [0]=ATOM  [1]=serial  [2]=atom  [3]=residue  [4]=chain  [5]=resSeq  ...
 """
 
+from typing import Generator, List, Tuple
+
+"""--- AI-use disclosure -------------------------------------------------------
+# AI Tool: Gemini Notebook (Gemini 1.5 Pro)
+# Purpose: Consulted as a reference for PEP 484 type-hinting on generators and set
+#          comprehension patterns for counting unique tuples in PDB records. All module
+#          logic and execution were independently written and verified.
+# Prompt: "How to annotate Python generators returning lists of strings with PEP 484
+#          and use set comprehensions for distinct tuple counting? With provided sources."
+# -----------------------------------------------------------------------------
+"""
 
 def atom_records(path):
     """Yield the whitespace-split fields of each ATOM line in a PDB file."""
