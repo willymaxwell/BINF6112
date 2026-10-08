@@ -1,0 +1,3 @@
+atoms: 7
+chains: 2
+residues: 3
