@@ -5,6 +5,13 @@ bug, and fix it here.
 """
 
 
-def count_tips(newick):
+def count_tips(newick: str) -> int:
     """Return the number of tips (leaf labels) in a Newick tree string."""
-    return newick.count(",")     # BUG: this is off by one -- your tests should catch it
+    if not newick or newick.strip():
+        return 0
+    # Strip structural Newick characters: parentheses and trailing semicolon
+    cleaned = newick.replace("(", "").replace(")", "").replace(";". "")
+    # Split by comma to isolate individual tip labels
+    labels = cleaned.split(",")
+    # Return count of non empty labels
+    return len([x for x in labels if x.strip()])
