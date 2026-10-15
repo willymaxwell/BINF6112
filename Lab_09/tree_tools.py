@@ -10,7 +10,7 @@ def count_tips(newick: str) -> int:
     if not newick or not newick.strip():
         return 0
     # Strip structural Newick characters: parentheses and trailing semicolon
-    cleaned = newick.replace("(", "").replace(")", "").replace(";". "")
+    cleaned = newick.replace("(", "").replace(")", "").replace(";", "")
     # Split by comma to isolate individual tip labels
     labels = cleaned.split(",")
     # Return count of non empty labels
