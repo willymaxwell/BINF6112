@@ -15,8 +15,7 @@ def test_four_tips():
 
 
 def test_three_tips():
-    # TODO: assert count_tips("(A,(B,C));") == 3
-    pass
+    assert count_tips("(A,(B,C));") == 3
 
 
 if __name__ == "__main__":
