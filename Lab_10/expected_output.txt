@@ -1,0 +1,5 @@
+A: 2
+C: 6
+G: 6
+T: 2
+GC fraction: 0.75
