@@ -7,7 +7,7 @@ bug, and fix it here.
 
 def count_tips(newick: str) -> int:
     """Return the number of tips (leaf labels) in a Newick tree string."""
-    if not newick or newick.strip():
+    if not newick or not newick.strip():
         return 0
     # Strip structural Newick characters: parentheses and trailing semicolon
     cleaned = newick.replace("(", "").replace(")", "").replace(";", "")
