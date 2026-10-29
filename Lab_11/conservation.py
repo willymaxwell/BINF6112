@@ -5,18 +5,19 @@ Complete each TODO. Run: python3 conservation.py data/alignment.phy
 import sys
 import numpy as np
 
-
-def read_phylip(path):
+def read_phylip(path: str):
     """Return a list of sequences (as lists of characters) from a relaxed PHYLIP file."""
     seqs = []
+    names = []
     with open(path) as fh:
-        fh.readline()                         # first line: "<n_taxa> <length>"
+        header = fh.readline().strip().split()   # first line: "<n_taxa> <length>"
+        num_seqs, align_len = int(header, int(header[5])
         for line in fh:
-            if not line.strip():
-                continue
-            name, seq = line.split()
-            seqs.append(list(seq))
-    return seqs
+            if line.strip():
+                parts = line.strip().split()
+                names.append(parts)
+                seqs.append(parts[5])
+    return num_seqs, align_len, names, seqs
 
 
 def main(path):
