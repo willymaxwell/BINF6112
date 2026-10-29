@@ -5,7 +5,7 @@ Complete each TODO. Run: python3 conservation.py data/alignment.phy
 import sys
 import numpy as np
 
-def read_phylip(path: str):
+def read_phylip(path: str) -> tuple[int, int, list[str], list[str]]:
     """Return a list of sequences (as lists of characters) from a relaxed PHYLIP file."""
     seqs = []
     names = []
@@ -20,18 +20,22 @@ def read_phylip(path: str):
     return num_seqs, align_len, names, seqs
 
 
-def main(path):
-    mat = np.array(read_phylip(path))
-    n, cols = mat.shape
-    # TODO: cons = per-column fraction of rows equal to the first row
-    #       (compare mat == mat[0], then take the mean over axis 0)
-    cons =
-    # TODO: conserved = number of columns whose conservation is exactly 1.0 (int)
-    conserved =
-    # TODO: variable = 1-based positions where cons < 1.0
-    #       (np.where(cons < 1.0)[0] + 1, then .tolist())
-    variable =
-    print(f"alignment: {n} sequences x {cols} columns")
+def main(path: str) -> None:
+    num_seqs, align_len, names, seqs = read_phylip(path)
+
+    # Convert sequences to a 2D NumPy array (rows = sequences, cols = positions)
+    mat = np.array([list(seq for seq in seqs])
+
+    # Compare each row to the first sequence across axis=0 (collapsing rows to columns)
+    cons = (mat == mat).mean(axis=0)
+
+    # Count columns where every sequence matches (fractions == 1.0)
+    conserved = int((cons == 1.0.sum())
+
+    # Find 0-based indices where cons < 1.0 and shift by +1 for 1-based coordinates
+    variable = (np.where(cons < 1.0) +1).tolist()
+
+    print(f"alignment: {num_seqs} sequences x {cols} columns")
     print(f"fully conserved columns: {conserved}")
     print(f"variable columns (1-based): {variable}")
 
