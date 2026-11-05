@@ -11,12 +11,15 @@ import pandas as pd
 
 def main(path):
     cols = ["query", "subject", "evalue", "pident"]
-    # TODO: hits = read the TSV with pd.read_csv (sep tab, names=cols)
+    # Read tab-seperated file with specified column names
     hits = pd.read_csv(path, sep='\t', names=cols)
-    # TODO: sig = rows of hits where evalue < 1e-5
+
+    # Filter for significant hits (E-value < 1e-5)
     sig = hits[hits['evalue'] < 1e-5]
-    # TODO: best = sig sorted by evalue, then groupby("query").first()
-    best = 
+
+    # Sort by E-value and take the frist (best) hit for each query
+    best = sig.sort_values('evalue').groupby('query').first()
+
     print(f"significant hits: {len(sig)}")
     for query, row in best.iterrows():
         print(f"{query} -> {row['subject']}")
