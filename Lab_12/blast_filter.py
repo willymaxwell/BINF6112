@@ -12,7 +12,7 @@ import pandas as pd
 def main(path):
     cols = ["query", "subject", "evalue", "pident"]
     # TODO: hits = read the TSV with pd.read_csv (sep tab, names=cols)
-    hits =
+    hits = pd.read_csv(path, sep='\t', names=cols)
     # TODO: sig = rows of hits where evalue < 1e-5
     sig =
     # TODO: best = sig sorted by evalue, then groupby("query").first()
