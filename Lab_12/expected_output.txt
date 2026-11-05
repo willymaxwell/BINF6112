@@ -1,0 +1,3 @@
+significant hits: 2
+q1 -> hitA
+q2 -> hitC
